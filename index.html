@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="CSS/style.css" />
+
+    <title>Frontend Mentor | Multi-step form</title>
+
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <aside class="sidebar">
+        <div class="step step-1">
+          <div class="number active">1</div>
+          <div class="text">
+            <span class="step-number">STEP 1</span>
+            <span class="step-description">YOUR INFO</span>
+          </div>
+        </div>
+        <div class="step step-2">
+          <div class="number">2</div>
+          <div class="text">
+            <span class="step-number">STEP 2</span>
+            <span class="step-description">SELECT PLAN</span>
+          </div>
+        </div>
+        <div class="step step-3">
+          <div class="number">3</div>
+          <div class="text">
+            <span class="step-number">STEP 3</span>
+            <span class="step-description">ADD-ONS</span>
+          </div>
+        </div>
+        <div class="step step-4">
+          <div class="number">4</div>
+          <div class="text">
+            <span class="step-number">STEP 4</span>
+            <span class="step-description">SUMMARY</span>
+          </div>
+        </div>
+      </aside>
+      <section class="current-step">
+        <div class="step shown step-1">
+          <div class="heading">
+            <h1>Personal info</h1>
+            <p>Please provide your name, email address, and phone number.</p>
+          </div>
+          <form>
+            <div>
+              <label for="name" class="name"> Name</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="e.g. Stephen King"
+                autocomplete="off"
+              />
+              <span>This field is required</span>
+            </div>
+            <div>
+              <label for="email" class="email"> Email Address</label>
+              <input
+                type="text"
+                id="email"
+                placeholder="e.g.stephenking@lorem.com"
+                autocomplete="off"
+                novalidate
+              />
+              <span>This field is required</span>
+            </div>
+            <div>
+              <label for="phone" class="phone"> Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                placeholder="e.g. +1 234 567 890"
+                autocomplete="off"
+              />
+              <span>This field is required</span>
+            </div>
+            <div class="buttons">
+              <button type="submit" class="next">Next Step</button>
+            </div>
+          </form>
+        </div>
+        <div class="step step-2">
+          <div class="heading">
+            <h1>Select your plan</h1>
+            <p>You have the option of monthly or yearly billing.</p>
+          </div>
+          <form>
+            <input type="radio" name="plan" id="arcade-plan" checked />
+            <label for="arcade-plan">
+              <img src="assets/images/icon-arcade.svg" alt="arcade icon" />
+              <div class="text">
+                <span class="plan-name">Arcade</span>
+                <span class="plan-price monthly">$9/mo</span>
+                <span class="plan-price yearly d-none">$90/yr</span>
+                <span class="months-free">2 months free</span>
+              </div>
+            </label>
+            <input type="radio" name="plan" id="advanced-plan" />
+            <label for="advanced-plan">
+              <img src="assets/images/icon-advanced.svg" alt="advanced icon" />
+              <div class="text">
+                <span class="plan-name">Advanced</span>
+                <span class="plan-price monthly">$12/mo</span>
+                <span class="plan-price yearly d-none">$120/yr</span>
+                <span class="months-free">2 months free</span>
+              </div>
+            </label>
+            <input type="radio" name="plan" id="pro-plan" />
+            <label for="pro-plan">
+              <img src="assets/images/icon-pro.svg" alt="pro icon" />
+              <div class="text">
+                <span class="plan-name">Pro</span>
+                <span class="plan-price monthly">$15/mo</span>
+                <span class="plan-price yearly d-none">$150/yr</span>
+                <span class="months-free">2 months free</span>
+              </div>
+            </label>
+            <div class="buttons">
+              <button type="button" class="previous">Go Back</button>
+              <button type="submit" class="next">Next Step</button>
+            </div>
+          </form>
+          <input type="checkbox" name="monthly-yearly" id="monthly-yearly" />
+          <label for="monthly-yearly" class="monthly-yearly">
+            <span class="monthly">Monthly</span>
+            <span class="switch"></span>
+            <span class="yearly">Yearly</span>
+          </label>
+        </div>
+        <div class="step step-3">
+          <div class="heading">
+            <h1>step 3</h1>
+            <p>Please provide your name, email address, and phone number.</p>
+          </div>
+          <form>
+            <div class="buttons">
+              <button type="button" class="previous">Go Back</button>
+              <button type="submit" class="next">Next Step</button>
+            </div>
+          </form>
+        </div>
+        <div class="step step-4">
+          <div class="heading">
+            <h1>step 4</h1>
+            <p>Please provide your name, email address, and phone number.</p>
+          </div>
+          <form>
+            <div class="buttons">
+              <button type="button" class="previous">Go Back</button>
+              <button type="submit" class="confirm">Confirm</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a
+        href="https://www.frontendmentor.io/profile/abdulaziz-M895"
+        target="_blank"
+        >Abdulaziz</a
+      >.
+    </footer>
+
+    <script src="JS/scirpt.js"></script>
+  </body>
+</html>

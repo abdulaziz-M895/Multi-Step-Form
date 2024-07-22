@@ -1,0 +1,451 @@
+/* CSS Reset */
+:root {
+  --Marine-blue: hsl(213, 96%, 18%);
+  --Purplish-blue: hsl(243, 100%, 62%);
+  --Pastel-blue: hsl(228, 100%, 84%);
+  --Light-blue: hsl(206, 94%, 87%);
+  --Strawberry-red: hsl(354, 84%, 57%);
+  --Cool-gray: hsl(231, 11%, 63%);
+  --Light-gray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+  --initial-border: 1px solid var(--Light-gray);
+  --transition-time: 0.3s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  background-color: var(--Magnolia);
+}
+
+a {
+  color: inherit;
+  display: inline-block;
+  text-decoration: none;
+}
+
+span {
+  display: inline-block;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: scale var(--transition-time);
+}
+button:active {
+  scale: 0.95;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* End CSS Reset */
+
+.container {
+  padding: 0 15px;
+  margin-inline: auto;
+}
+
+/* Mobile */
+@media (min-width: 576px) {
+  .container {
+    width: 540px;
+  }
+}
+/* Small */
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* Desktop */
+@media (min-width: 1440px) {
+  .container {
+    width: 1400px;
+  }
+}
+
+main {
+  width: 70%;
+  margin: 30px auto 50px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--White);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.07);
+  display: flex;
+  gap: 10%;
+}
+.sidebar {
+  background: url(../assets/images/bg-sidebar-desktop.svg) no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding: 40px 25px 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.sidebar .step {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.sidebar .step .number {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--White);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--White);
+  font-size: 15px;
+  font-weight: 700;
+  transition: var(--transition-time);
+}
+.sidebar .step .number.active {
+  background-color: var(--Light-blue);
+  border-color: var(--Light-blue);
+  color: var(--Marine-blue);
+}
+.sidebar .step .text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.sidebar .step .text .step-number {
+  color: var(--Pastel-blue);
+  font-size: 13px;
+}
+.sidebar .step .text .step-description {
+  width: 150px;
+  color: var(--White);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.current-step {
+  flex: 1;
+  padding-right: 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.current-step > .step {
+  position: relative;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  background-color: var(--White);
+}
+.current-step > .step.shown {
+  z-index: 1;
+}
+.current-step .heading {
+  margin-block: 25px;
+}
+.current-step .heading h1 {
+  color: var(--Marine-blue);
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+.current-step .heading p {
+  color: var(--Cool-gray);
+  font-size: 15px;
+}
+
+/* Step one styles */
+.current-step > .step-1 form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-inline: 10px;
+  padding-bottom: 70px;
+}
+.current-step > .step-1 form > div:not(.buttons) {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.current-step > .step-1 form > div label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.current-step > .step-1 form > div > span {
+  opacity: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--Strawberry-red);
+  transition: var(--transition-time);
+  margin-left: 2px;
+}
+.current-step > .step-1 form > div.required > span {
+  opacity: 1;
+}
+.current-step > .step-1 form > div input {
+  border: var(--initial-border);
+  outline: none;
+  padding: 15px;
+  border-radius: 10px;
+  transition: var(--transition-time);
+  caret-color: var(--Purplish-blue);
+}
+.current-step > .step-1 form > div input:focus {
+  border-color: var(--Purplish-blue);
+}
+.current-step > .step-1 form > div input::placeholder {
+  color: var(--Cool-gray);
+}
+.current-step > .step-1 form > div.required input {
+  border-color: var(--Strawberry-red);
+  caret-color: var(--Strawberry-red);
+}
+.current-step > .step-1 form > div.required input {
+  border-color: var(--Strawberry-red);
+}
+/* End Step one styles */
+
+/* Step two styles */
+.current-step > .step-2 form {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0;
+}
+.current-step > .step-2 input {
+  appearance: none;
+}
+.current-step > .step-2 form label {
+  border: var(--initial-border);
+  padding: 15px 20px 10px;
+  border-radius: 6px;
+  transition: var(--transition-time);
+  cursor: pointer;
+  flex-basis: calc(100% / 3);
+}
+.current-step > .step-2 form label:hover {
+  border-color: var(--Purplish-blue);
+}
+.current-step > .step-2 form input:checked + label {
+  border-color: var(--Purplish-blue);
+  background-color: var(--Alabaster);
+}
+.current-step > .step-2 form label .text {
+  margin-block: 40px 10px;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+.current-step > .step-2 form label .text .plan-name {
+  color: var(--Marine-blue);
+  font-weight: 700;
+  font-size: 17px;
+}
+.current-step > .step-2 form label .text .plan-price {
+  color: var(--Cool-gray);
+}
+.current-step > .step-2 form label .text .months-free {
+  color: var(--Marine-blue);
+  font-size: 13px;
+  font-weight: 500;
+  max-height: 0.0001px;
+  overflow: hidden;
+  transition: var(--transition-time);
+}
+.current-step > .step-2 form label .text .months-free.shown {
+  margin-top: 10px;
+  max-height: 50px;
+}
+
+.current-step > .step-2 > .monthly-yearly {
+  display: flex;
+  justify-content: center;
+  padding: 15px 20px;
+  background-color: var(--Alabaster);
+  border-radius: 6px;
+  gap: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.current-step > .step-2 > .monthly-yearly .switch {
+  background-color: var(--Marine-blue);
+  padding: 10px 20px;
+  border-radius: 10px;
+  position: relative;
+}
+.current-step > .step-2 > .monthly-yearly .switch::after {
+  content: "";
+  position: absolute;
+  background-color: var(--White);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  top: 50%;
+  left: 3px;
+  translate: 0 -50%;
+  transition: var(--transition-time);
+}
+.current-step > .step-2 > input:checked + .monthly-yearly .switch::after {
+  left: 21.5px;
+}
+.current-step > .step-2 > .monthly-yearly span {
+  transition: var(--transition-time);
+}
+.current-step > .step-2 > .monthly-yearly .monthly {
+  color: var(--Marine-blue);
+}
+.current-step > .step-2 > input:checked + .monthly-yearly .monthly {
+  color: var(--Cool-gray);
+}
+.current-step > .step-2 > .monthly-yearly .yearly {
+  color: var(--Cool-gray);
+}
+.current-step > .step-2 > input:checked + .monthly-yearly .yearly {
+  color: var(--Marine-blue);
+}
+/* End Step two styles */
+
+.current-step form .buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px;
+}
+.current-step form .buttons button {
+  padding: 12px 20px;
+  border-radius: 10px;
+  transition: var(--transition-time);
+}
+.current-step form .buttons .previous {
+  color: var(--Cool-gray);
+  font-size: 15px;
+  font-weight: 500;
+}
+.current-step form .buttons .previous:hover {
+  color: var(--Marine-blue);
+}
+.current-step form .buttons .next {
+  margin-left: auto;
+  background-color: var(--Marine-blue);
+  color: var(--Alabaster);
+}
+.current-step form .buttons .confirm {
+  padding: 7px 20px;
+  letter-spacing: 0.9px;
+  background-color: var(--Purplish-blue);
+  color: var(--Alabaster);
+}
+
+.current-step form .buttons :is(.next, .confirm):hover {
+  opacity: 0.9;
+}
+@media (max-width: 1025px) {
+  main {
+    width: 80%;
+  }
+}
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+    padding: 0 0 50px;
+    background-color: transparent;
+  }
+  .sidebar {
+    flex-direction: row;
+    justify-content: center;
+    background-image: url("../assets/images/bg-sidebar-mobile.svg");
+    padding: 20px 20px 120px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .sidebar .step .text {
+    display: none;
+  }
+  .current-step {
+    width: 80%;
+    margin-inline: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--White);
+    margin-top: -80px;
+  }
+  .current-step .heading {
+    margin-top: 0;
+  }
+}
+@media (max-width: 600px) {
+  main {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 0 0 90px;
+  }
+  .sidebar {
+    border-radius: 0;
+  }
+  .current-step > .step-1 form {
+    padding: 0;
+  }
+  .current-step form .buttons {
+    bottom: -90px;
+    right: -20px;
+    background-color: var(--Magnolia);
+  }
+  .current-step > .step-2 form {
+    flex-direction: column;
+  }
+  .current-step > .step-2 form label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+  }
+  .current-step > .step-2 form label .text {
+    margin: 0;
+  }
+  .current-step > .step-2 form label .text .months-free.shown {
+    margin: 0;
+  }
+}
+
+.d-none {
+  display: none;
+}
